@@ -1,0 +1,4 @@
+font-family = "JetBrainsMono NF"
+theme = catppuccin-mocha
+shell-integration = fish
+command = "/opt/homebrew/bin/fish"
