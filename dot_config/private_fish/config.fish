@@ -9,8 +9,8 @@ if status is-interactive
 end
 
 # aliases
-alias vim = "nvim"
+alias vim="nvim"
 
-alias ch = "chezmoi"
-alias chd = "chezmoi diff"
-alias cha = "chezmoi apply"
+alias ch="chezmoi"
+alias chd="chezmoi diff"
+alias cha="chezmoi apply"
