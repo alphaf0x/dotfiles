@@ -3,6 +3,7 @@
 brew "chezmoi"
 brew "git"
 brew "fish"
+brew "fisher"
 brew "fd"
 brew "awscli"
 brew "fastfetch"
