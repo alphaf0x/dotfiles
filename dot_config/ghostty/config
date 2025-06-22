@@ -3,6 +3,8 @@ config-file = IC_Green_PPL
 shell-integration = fish
 command = "/opt/homebrew/bin/fish -l"
 
+# Check if tmux is installed and attach to an existing tmux session
+command = fish --login -c `if type -q tmux; tmux attach; or tmux; else; fish; end`
 
 background-blur = true
 background-opacity = 0.75
