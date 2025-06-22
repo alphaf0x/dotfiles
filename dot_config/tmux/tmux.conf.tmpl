@@ -80,7 +80,7 @@
 # -- GENERAL SETTINGS ---------------------------------------------------------
 
 set-option -g default-terminal "tmux-256color"
-set-option -sa terminal-overrides ",alacritty:RGB,xterm-256color:RGB"
+set-option -sa terminal-overrides ",*:RGB" # Enables RGB for all terminal types
 set-option -g focus-events on
 
 # Prefix key configuration
@@ -211,8 +211,29 @@ bind R source-file ~/.config/tmux/tmux.conf \; display "Config reloaded"       #
 
 # -- PLUGINS ------------------------------------------------------------------
 
-run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
-run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
+##############################################################################
+
+# Plugin installation and uninstallation is done through TPM
+# To install:
+  # First add plugin below
+  # Then press prefix shift+i (uppercase, as in Install)
+# To uninstall:
+  # First comment plugin below
+  # Then press prefix alt+u (lowercase, as in uninstall)
+  # Then run an update to see the list of installed plugins
+  # gx the `~/.tmux/plugins/tmux` path and plugin should not be there
+# To update:
+  # prefix shift+u (uppercase)
+  # type `all` hen hit enter
+
+##############################################################################
+
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+
+#run-shell ~/.tmux/plugins/tmux-resurrect/resurrect.tmux
+#run-shell ~/.tmux/plugins/tmux-continuum/continuum.tmux
 set -g @continuum-restore 'on'
 set -g @resurrect-capture-pane-contents 'on'
 
@@ -243,3 +264,6 @@ bind -n TripleClick1Pane select-pane \; copy-mode -M \; send -X select-line
 # Drag to start selection
 bind -n MouseDrag1Pane if -Ft= "#{mouse_any_flag}" "if -Ft= \"#{pane_in_mode}\" \"copy-mode -M\" \"send-keys -M\"" "copy-mode -M"
 
+# Initialize TMUX plugin manager
+# (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
