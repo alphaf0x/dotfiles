@@ -1,5 +1,5 @@
 font-family = "JetBrainsMono NF"
-config-file = IC_Green_PPL
+config-file = alpha-ghostty
 shell-integration = fish
 command = "/opt/homebrew/bin/fish -l"
 
