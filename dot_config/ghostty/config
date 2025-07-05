@@ -6,7 +6,7 @@ command = "/opt/homebrew/bin/fish -l"
 #Tmux
 # Check if tmux is installed and attach to an existing tmux session
 #command = fish --login -c `if type -q tmux; tmux attach; or tmux; else; fish; end`
-keybind = super+a=unbind # unbind so tmux prefix can work
+keybind = super+a=ignore
 
 # Visual
 background-blur = true
