@@ -20,8 +20,8 @@ palette = 13=#9250B1
 palette = 6=#3659AB
 palette = 14=#3659AB
 # white
-palette = 7=#FFFFFF
-palette = 15=#EFF1F2
+palette = 7=#EFF1F2
+palette = 15=#FFFFFF
 
 background = #F5F5F5
 foreground = #414858
