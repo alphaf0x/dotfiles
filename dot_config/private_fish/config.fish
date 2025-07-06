@@ -4,7 +4,7 @@ fish_add_path /opt/homebrew/bin
 
 # Set fish prompt
 function fish_right_prompt
-    echo (set_color 5facbf)"$USER"@(prompt_hostname)
+    echo (set_color 5facbf)"$USER"
 end
 
 set -U fish_cursor_default block
