@@ -1,5 +1,5 @@
 font-family = "JetBrainsMono NF"
-config-file = alpha-y2k-light
+config-file = alpha-y2k-dark
 shell-integration = fish
 command = "/opt/homebrew/bin/fish -l"
 
