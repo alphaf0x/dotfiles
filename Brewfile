@@ -13,6 +13,7 @@ brew "gitui"
 brew "imagemagick"
 brew "luarocks"
 brew "lazygit"
+brew "node"
 # brew "jq"  #command-line JSON processor
 brew "neovim"
 brew "asciinema"
