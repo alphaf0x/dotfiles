@@ -33,11 +33,6 @@ function fish_prompt
     # space
     echo -n " "
 
-    # arrows
-    # echo -n (set_color --bold efcf40)"❱"
-    # echo -n (set_color --bold ef9540)"❱"
-    # echo -n (set_color --bold ea3838)"❱"
-
     echo -n (set_color --bold 14b8a6)"→"
 
     #space
@@ -46,9 +41,17 @@ function fish_prompt
     set_color normal
 end
 
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
+# Match colours from ghostty theme
+set -l foreground d8dee9
+set -l selection eff1f2
+set -l comment 597bc5
+set -l red c03d3d
+set -l orange fa811e
+set -l yellow cacd42
+set -l green 7a9639
+set -l purple 9250b1
+set -l cyan 7dcfff
+set -l pink 9250b1
 
 # aliases
 alias vim="nvim"
