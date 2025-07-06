@@ -26,6 +26,7 @@ brew "xclip"
 # Casks
 cask "alacritty"
 cask "ghostty"
+cask "claude"
 cask "font-jetbrains-mono-nerd-font"
 cask "private-internet-access"
 # Vscode extensions
