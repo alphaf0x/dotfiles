@@ -11,21 +11,21 @@ palette = 10=#7A9639
 palette = 3=#CACD42
 palette = 11=#CACD42
 # blue
-palette = 4=#5FACBF
-palette = 12=#5FACBF
+palette = 4=#597BC5
+palette = 12=#597BC5
 # purple
 palette = 5=#9250B1
 palette = 13=#9250B1
 # aqua
-palette = 6=#3659AB
-palette = 14=#3659AB
+palette = 6=#ACBCFA
+palette = 14=#5FACBF
 # white
 palette = 7=#EFF1F2
 palette = 15=#FFFFFF
 
-background = #F5F5F5
-foreground = #414858
-cursor-color = #5FACBF
-cursor-text = #020131
+background = #000014
+foreground = #F5F5F5
+cursor-color = #FFFFFF
+cursor-text = #282828
 selection-background = #FFFFFF
 selection-foreground = #394A61
