@@ -27,6 +27,8 @@ brew "xclip"
 # Casks
 cask "alacritty"
 cask "ghostty"
+cask "moom"
+cask "bettermouse"
 cask "claude"
 cask "font-jetbrains-mono-nerd-font"
 cask "private-internet-access"
