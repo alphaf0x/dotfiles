@@ -30,6 +30,7 @@
 #                    C-a + S            Choose session (interactive)
 #                    C-a + d            Detach from session
 #                    C-a + $            Rename current session
+#                    C-a + K            Kill chosen session + stay in current
 #
 # COPY MODE:
 #   Enter:           C-a + Space        Enter copy mode
@@ -179,6 +180,7 @@ bind e command-prompt -p "Rename window:" "rename-window '%%'"  # Rename window
 
 bind C new-session -s "new-session"           # Create new session
 bind S choose-session                         # Session overview
+bind K command-prompt -p "Kill session:" "kill-session -t '%%'"
 
 # -- COPY MODE ----------------------------------------------------------------
 
