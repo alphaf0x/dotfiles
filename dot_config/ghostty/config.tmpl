@@ -1,11 +1,12 @@
 font-family = "JetBrainsMono NF"
 config-file = alpha-y2k-dark
 shell-integration = fish
+{{- if eq .chezmoi.os "darwin" }}
 command = "/opt/homebrew/bin/fish -l"
+{{- else }}
+command = "/usr/bin/fish -l"
+{{- end }}
 
-#Tmux
-# Check if tmux is installed and attach to an existing tmux session
-#command = fish --login -c `if type -q tmux; tmux attach; or tmux; else; fish; end`
 keybind = super+a=ignore
 
 # Visual
@@ -15,7 +16,10 @@ unfocused-split-opacity = 0.7
 custom-shader = shaders/cubes.glsl
 custom-shader = shaders/bloom025.glsl
 # MacOS specific options
+{{- if eq .chezmoi.os "darwin" }}
+# MacOS specific options
 macos-icon = glass
+{{- end }}
 
 quick-terminal-animation-duration = 0.1
 
