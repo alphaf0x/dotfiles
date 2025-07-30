@@ -1,11 +1,11 @@
 # Set minimal flag if desired (optional)
-export CHEZMOI_MINIMAL=true
+`export CHEZMOI_MINIMAL=true`
 
 ## What Gets Excluded in Minimal Mode:
 - Personal tools like PIA VPN, hugo, etc.
 
 # Install and apply
-chezmoi init --apply alphaf0x
+`chezmoi init --apply alphaf0x`
 
 # Install chezmoi and your dotfiles on a new machine with a single command
 
