@@ -1,0 +1,36 @@
+#!/bin/bash
+{{- if eq .chezmoi.os "darwin" }}
+set -e
+
+echo "Ensuring Brewfile packages are installed/updated..."
+
+if ! command -v brew &>/dev/null; then
+  echo "Homebrew is not installed. Please install it manually first:"
+  echo "  https://brew.sh"
+  exit 1
+fi
+
+# Brewfile hash: {{ include "Brewfile.tmpl" | sha256sum }}
+# brew bundle install --global
+if [ -f "$HOME/Brewfile" ]; then
+    brew bundle install --file="$HOME/Brewfile"
+else
+    echo "Brewfile not found at $HOME/Brewfile"
+    exit 1
+fi
+
+echo "Brew bundle finished!"
+
+echo "Updating Fish plugins..."
+if command -v fisher &> /dev/null; then
+    fisher update
+fi
+
+echo "Updating Neovim plugins..."
+if command -v nvim &> /dev/null; then
+    nvim --headless +Lazy\ update +qa
+fi
+
+echo "Update complete!"
+
+{{- end }}
