@@ -16,35 +16,42 @@ brew "lazygit"
 brew "node"
 # brew "jq"  #command-line JSON processor
 brew "neovim"
-brew "asciinema"
-brew "go"
-brew "hugo"
 brew "ripgrep"
-brew "terraform"
 brew "tmux"
 brew "wget"
 brew "xclip"
+{{- if not (env "CHEZMOI_MINIMAL") }}
+brew "go"
+brew "asciinema"
+brew "hugo"
+brew "terraform"
+{{- end}}
 # Casks
-cask "alacritty"
 cask "ghostty"
-cask "claude"
 cask "font-jetbrains-mono-nerd-font"
-cask "private-internet-access"
 cask "bettermouse"
 cask "moom"
+{{- if not (env "CHEZMOI_MINIMAL") }}
+cask "alacritty"
+cask "claude"
+cask "private-internet-access"
 cask "lulu"
+{{- end}}
 # Vscode extensions
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "enkia.tokyo-night"
 vscode "catppuccin.catppuccin-vsc"
-vscode "james-yu.latex-workshop"
 vscode "ecmel.vscode-html-css"
 vscode "esbenp.prettier-vscode"
 vscode "foxundermoon.shell-format"
-vscode "golang.go"
-vscode "hashicorp.terraform"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "vscodevim.vim"
+{{- if not (env "CHEZMOI_MINIMAL") }}
+vscode "james-yu.latex-workshop"
+vscode "golang.go"
+vscode "hashicorp.terraform"
+{{- end}}
+
