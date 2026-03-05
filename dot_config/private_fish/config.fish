@@ -82,3 +82,5 @@ alias vim="nvim"
 alias ch="chezmoi"
 alias chd="chezmoi diff"
 alias cha="chezmoi apply"
+
+string match -q "$TERM_PROGRAM" "kiro" and . (kiro --locate-shell-integration-path fish)
