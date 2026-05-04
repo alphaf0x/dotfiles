@@ -1,0 +1,12 @@
+{{- $isServer := false -}}
+{{- if env "CHEZMOI_SERVER" -}}
+{{-   $isServer = true -}}
+{{- else -}}
+{{-   $isServer = promptBoolOnce . "is_server" "Is this a server install (no GUI apps)" -}}
+{{- end -}}
+
+[data]
+    is_server = {{ $isServer }}
+
+[edit]
+    command = "nvim"

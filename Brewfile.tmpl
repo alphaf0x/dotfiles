@@ -1,59 +1,49 @@
-# Taps
-# Brews
+# Core CLI tools
 brew "chezmoi"
 brew "git"
 brew "fish"
-brew "fisher"
 brew "fd"
-brew "awscli"
 brew "fastfetch"
 brew "fzf"
 brew "gcc"
 brew "gitui"
-brew "imagemagick"
-brew "luarocks"
 brew "lazygit"
-brew "node"
-brew "postgresql@15"
-# brew "jq"  #command-line JSON processor
 brew "neovim"
+brew "node"
 brew "ripgrep"
 brew "tmux"
 brew "wget"
-brew "xclip"
-{{- if not (env "CHEZMOI_MINIMAL") }}
+{{- if not (and (hasKey . "is_server") .is_server) }}
+
+# Desktop/dev tools
+brew "awscli"
 brew "go"
-brew "asciinema"
 brew "hugo"
+brew "imagemagick"
+brew "luarocks"
 brew "terraform"
-{{- end}}
+
 # Casks
-cask "ghostty"
-cask "font-jetbrains-mono-nerd-font"
 cask "bettermouse"
+cask "claude"
+cask "font-jetbrains-mono-nerd-font"
+cask "ghostty"
 cask "moom"
 cask "visual-studio-code"
-{{- if not (env "CHEZMOI_MINIMAL") }}
-cask "alacritty"
-cask "claude"
-cask "private-internet-access"
-cask "lulu"
-{{- end}}
-# Vscode extensions
+
+# VS Code extensions
 vscode "amazonwebservices.aws-toolkit-vscode"
-vscode "enkia.tokyo-night"
 vscode "catppuccin.catppuccin-vsc"
 vscode "ecmel.vscode-html-css"
+vscode "enkia.tokyo-night"
 vscode "esbenp.prettier-vscode"
 vscode "foxundermoon.shell-format"
+vscode "golang.go"
+vscode "hashicorp.terraform"
+vscode "james-yu.latex-workshop"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
 vscode "vscodevim.vim"
-{{- if not (env "CHEZMOI_MINIMAL") }}
-vscode "james-yu.latex-workshop"
-vscode "golang.go"
-vscode "hashicorp.terraform"
-{{- end}}
-
+{{- end }}

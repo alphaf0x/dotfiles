@@ -1,5 +1,9 @@
+README.md
 dot_config/private_fish/fish_variables
 {{- if ne .chezmoi.os "darwin" }}
 Brewfile
 {{- end }}
-README.md
+{{- if and (hasKey . "is_server") .is_server }}
+dot_config/ghostty
+dot_config/nvim/lua/plugins/qmk.lua
+{{- end }}

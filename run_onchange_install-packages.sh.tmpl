@@ -1,6 +1,7 @@
 #!/bin/bash
-{{- if eq .chezmoi.os "darwin" }}
 set -e
+
+{{- if eq .chezmoi.os "darwin" }}
 
 echo "Ensuring Brewfile packages are installed/updated..."
 
@@ -11,7 +12,6 @@ if ! command -v brew &>/dev/null; then
 fi
 
 # Brewfile hash: {{ include "Brewfile.tmpl" | sha256sum }}
-# brew bundle install --global
 if [ -f "$HOME/Brewfile" ]; then
     brew bundle install --file="$HOME/Brewfile"
 else
@@ -21,16 +21,48 @@ fi
 
 echo "Brew bundle finished!"
 
-echo "Updating Fish plugins..."
-if command -v fisher &> /dev/null; then
-    fisher update
+{{- else if eq .chezmoi.os "linux" }}
+
+echo "Installing packages via apt..."
+
+sudo apt-get update -qq
+sudo apt-get install -y \
+    build-essential \
+    curl \
+    fd-find \
+    fish \
+    fzf \
+    git \
+    neovim \
+    ripgrep \
+    tmux \
+    wget
+
+# Create fd symlink if needed (Ubuntu names the binary fdfind)
+if command -v fdfind &>/dev/null && ! command -v fd &>/dev/null; then
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$(which fdfind)" "$HOME/.local/bin/fd"
 fi
 
-echo "Updating Neovim plugins..."
-if command -v nvim &> /dev/null; then
-    nvim --headless +Lazy\ update +qa
-fi
-
-echo "Update complete!"
+echo "Apt packages installed!"
 
 {{- end }}
+
+# Install Fisher plugin manager if not present, then sync plugins
+if command -v fish &>/dev/null; then
+    echo "Setting up Fish plugins..."
+    fish -c '
+        if not functions -q fisher
+            curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+        end
+        fisher update
+    '
+fi
+
+# Sync Neovim plugins from lockfile
+if command -v nvim &>/dev/null; then
+    echo "Syncing Neovim plugins..."
+    nvim --headless "+Lazy! restore" +qa 2>/dev/null || true
+fi
+
+echo "Setup complete!"

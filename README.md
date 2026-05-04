@@ -1,20 +1,52 @@
-# Set minimal flag if desired (optional)
-`export CHEZMOI_MINIMAL=true`
+# dotfiles
 
-## What Gets Excluded in Minimal Mode:
-- Personal tools like PIA VPN, hugo, etc.
+Managed with [chezmoi](https://www.chezmoi.io/).
 
-# Install and apply
-`chezmoi init --apply alphaf0x`
+## Quick start
 
-# Install chezmoi and your dotfiles on a new machine with a single command
+### Desktop (macOS)
 
-chezmoi's install script can run chezmoi init for you by passing extra arguments to the newly installed chezmoi binary. If your dotfiles repo is github.com/$GITHUB_USERNAME/dotfiles then installing chezmoi, running chezmoi init, and running chezmoi apply can be done in a single line of shell:
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply alphaf0x
+```
 
-`sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME`
+You'll be prompted: **"Is this a server install (no GUI apps)?"** — answer `no`.
 
-If your dotfiles repo has a different name to dotfiles, or if you host your dotfiles on a different service, then see the reference manual for chezmoi init.
+### Server (Ubuntu/Linux)
 
-For setting up transitory environments (e.g. short-lived Linux containers) you can install chezmoi, install your dotfiles, and then remove all traces of chezmoi, including the source directory and chezmoi's configuration directory, with a single command:
+```sh
+export CHEZMOI_SERVER=true
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply alphaf0x
+```
 
-`sh -c "$(curl -fsLS get.chezmoi.io)" -- init --one-shot $GITHUB_USERNAME`
+Setting `CHEZMOI_SERVER=true` skips the prompt and excludes all GUI apps, desktop configs (Ghostty, VS Code, casks), and desktop-only tools.
+
+### Transient environments (containers, CI)
+
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --one-shot alphaf0x
+```
+
+## What's included
+
+| Component | Desktop | Server |
+|-----------|---------|--------|
+| fish shell + prompt + colors | yes | yes |
+| neovim (LazyVim) | yes | yes |
+| tmux + TPM | yes | yes |
+| fzf, ripgrep, fd | yes | yes |
+| Ghostty terminal | yes | -- |
+| Homebrew casks | yes | -- |
+| VS Code + extensions | yes | -- |
+
+## Day-to-day usage
+
+```sh
+chezmoi diff          # preview changes
+chezmoi apply         # apply changes
+chezmoi add ~/.file   # track a new file
+chezmoi edit ~/.file  # edit a tracked file
+chezmoi cd            # cd into source directory
+```
+
+Or use the fish aliases: `ch`, `chd`, `cha`.
